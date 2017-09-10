@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>     
+<!DOCTYPE configuration     
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"     
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="cacheEnabled" value="true" />
+		<!-- <setting name="useGeneratedKeys" value="false"/> -->
+		<!-- <setting name="defaultStatementTimeout" value="25"/> -->
+		<!-- <setting name="defaultFetchSize" value="1024"/> -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+	</settings>
+	<typeAliases>
+		<!--给实体类起一个别名 User -->
+		<!-- <typeAlias type="com.forum.po.User" alias="User" /> -->
+	</typeAliases>
+	<mappers>
+		<!--userMapper.xml装载进来 同等于把“dao”的实现装载进来 -->
+		<!-- <mapper resource="com/forum/dao/impl/userMapper.xml" /> -->
+	</mappers>
+
+</configuration>  
