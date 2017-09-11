@@ -12,6 +12,23 @@
     <select id="getAll" resultType="com.zt.entity.Stu">
         SELECT * from stu
     </select>
-
+    <!--插入一条用户记录-->
+    <insert id="insertStu">
+        INSERT into stu(
+           userName,
+           pwd,
+           phoneNum,
+           school
+        )VALUE (
+        #{userName},
+        #{pwd},
+        #{phoneNum},
+        #{school}
+        )
+    </insert>
+    <!--用户注册时判断用户名是否已经被占用-->
+    <select id="checkUserName" parameterType="string" resultType="int">
+        SELECT count(*) fron stu where userName = #{userName}
+    </select>
 
 </mapper>

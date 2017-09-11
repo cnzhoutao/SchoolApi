@@ -11,7 +11,7 @@ public class Stu implements Serializable {
     private String phoneNum;
     private String icon;
     private Date creTime;
-    private String schoolName;
+    private String school;
     private String msg;
     private int age;
     private String gender;
@@ -28,7 +28,7 @@ public class Stu implements Serializable {
                 ", phoneNum='" + phoneNum + '\'' +
                 ", icon='" + icon + '\'' +
                 ", creTime=" + creTime +
-                ", schoolName='" + schoolName + '\'' +
+                ", schoolName='" + school + '\'' +
                 ", msg='" + msg + '\'' +
                 ", age=" + age +
                 ", gender='" + gender + '\'' +
@@ -83,12 +83,12 @@ public class Stu implements Serializable {
         this.creTime = creTime;
     }
 
-    public String getSchoolName() {
-        return schoolName;
+    public String getSchool() {
+        return school;
     }
 
-    public void setSchoolName(String schoolName) {
-        this.schoolName = schoolName;
+    public void setSchool(String school) {
+        this.school = school;
     }
 
     public String getMsg() {
