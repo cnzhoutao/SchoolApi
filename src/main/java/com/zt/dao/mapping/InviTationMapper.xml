@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zt.dao.inner.InviTationDaoI">
+
+    <resultMap id="User" type="com.zt.entity.InviTation" autoMapping="true">
+
+    </resultMap>
+
+    <select id="getAllInvi" resultType="com.zt.entity.InviTation">
+        SELECT * from inviTation order by creTime DESC
+    </select>
+
+
+</mapper>

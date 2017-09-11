@@ -15,3 +15,7 @@ http://localhost:8080/reg.html?userName=南柯一梦&phoneNum=1515757603561&scho
 ```html
 http://localhost:8080/login.html?phoneNum=1515757603561&pwd=123456
 ```
+获取所有帖子的api
+```html
+http://localhost:8080/getAllInvi.html
+```
