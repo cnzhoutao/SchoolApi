@@ -31,4 +31,19 @@ public interface StuDaoI {
      * @return
      */
     public int checkUserName(@Param(value = "userName") String userName);
+
+    /**
+     * 用户登录操作，判断手机号和密码是否正确
+     * @param phoneNum
+     * @param pwd
+     * @return
+     */
+    public int login(@Param(value = "phoneNum")String phoneNum,@Param(value = "pwd") String pwd);
+
+    /**
+     * 检查用户的手机号是否已经注册过了
+     * @param phoneNum
+     * @return
+     */
+    public int checkPhoneNum(@Param(value = "phoneNum") String phoneNum);
 }

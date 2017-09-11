@@ -28,7 +28,15 @@
     </insert>
     <!--用户注册时判断用户名是否已经被占用-->
     <select id="checkUserName" parameterType="string" resultType="int">
-        SELECT count(*) fron stu where userName = #{userName}
+        SELECT count(*) from stu where userName = #{userName}
+    </select>
+    <!--用户登录，判断用户名和密码是否正确-->
+    <select id="login" resultType="int">
+        SELECT COUNT(*) from stu where phoneNum=#{phoneNum} and pwd=#{pwd}
     </select>
 
+    <!--判断手机号是否已经被占用-->
+    <select id="checkPhoneNum" resultType="int" parameterType="string">
+        SELECT count(*) from stu where phoneNum=#{phoneNum}
+    </select>
 </mapper>

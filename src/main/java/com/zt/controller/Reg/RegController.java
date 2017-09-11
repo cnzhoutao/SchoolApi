@@ -68,6 +68,8 @@ public class RegController {
 
     /**
      * 用户发起注册请求
+     * 在注册前先判断手机号是否已经注册过了，其次是用户名是否已经被占用
+     *
      * @param userName
      * @param pwd
      * @param phoneNum
@@ -80,22 +82,28 @@ public class RegController {
             , @RequestParam(value = "pwd") String pwd,
                                 @RequestParam(value = "phoneNum") String phoneNum,
                                 @RequestParam(value = "schoolName") String schoolName) {
+        System.err.println(userName + ":" + pwd + ":" + phoneNum + ":" + schoolName);
 
-                    System.err.println(userName+":"+pwd+":"+phoneNum+":"+schoolName);
+        try {
 
-                try{
-                    int count=stuDaoI.checkUserName(userName);
-                    if(count>=1){
-                        return ApiResponse.failure(0,"该用户名已经被占用");
-                    }
-                    stuDaoI.insertStu(userName,pwd,phoneNum,schoolName);
-                    return ApiResponse.success(1,"用户注册成功");
+            int phoneCount=stuDaoI.checkPhoneNum(phoneNum);
+            if(phoneCount>=1){
+                return ApiResponse.success(0,"该手机号已经被占用",null);
+            }
 
-                }catch (Exception e){
-                    System.err.println("用户注册失败:"+e.toString());
-                    return ApiResponse.failure(0,"用户注册失败,请稍后重试");
-                }
+            int count = stuDaoI.checkUserName(userName);
+            if (count >= 1) {
+                return ApiResponse.failure(0, "该用户名已经被占用");
+            }
+            stuDaoI.insertStu(userName, pwd, phoneNum, schoolName);
+            return ApiResponse.success(1, "用户注册成功");
+
+        } catch (Exception e) {
+            System.err.println("用户注册失败:" + e.toString());
+            return ApiResponse.failure(0, "用户注册失败,请稍后重试");
+        }
 
     }
+
 
 }
