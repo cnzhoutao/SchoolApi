@@ -19,3 +19,7 @@ http://localhost:8080/login.html?phoneNum=1515757603561&pwd=123456
 ```html
 http://localhost:8080/getAllInvi.html
 ```
+上传帖子的api
+```html
+http://localhost:8080/uploadInvi.html?type=1&title="测试"&content="标题"&detailImg=list
+```

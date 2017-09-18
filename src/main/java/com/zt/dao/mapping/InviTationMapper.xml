@@ -13,5 +13,20 @@
         SELECT * from inviTation order by creTime DESC
     </select>
 
+    <insert id="insertInvi" parameterType="com.zt.entity.InviTation">
+        INSERT into inviTation(
+          type,
+          title,
+          content
+        ) VALUE (
+          #{type},
+        #{title},
+        #{content}
+        )
+    </insert>
+
+    <select id="getIdByTitle" parameterType="string" resultType="long">
+        SELECT id FROM inviTation where title=#{title}
+    </select>
 
 </mapper>

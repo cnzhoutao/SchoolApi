@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zt.dao.inner.DetailImgDaoI">
+
+    <resultMap id="DetailImg" type="com.zt.entity.DetailImg" autoMapping="true">
+
+    </resultMap>
+
+    <insert id="insertDetailImg" parameterType="com.zt.entity.DetailImg" >
+        INSERT into detailImg(
+        inviId,
+        imgUrl
+        )VALUE (
+        #{inviId},
+        #{imgUrl}
+        )
+    </insert>
+
+</mapper>
