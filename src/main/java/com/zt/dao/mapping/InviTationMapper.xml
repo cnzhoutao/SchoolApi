@@ -5,9 +5,40 @@
 
 <mapper namespace="com.zt.dao.inner.InviTationDaoI">
 
-    <resultMap id="User" type="com.zt.entity.InviTation" autoMapping="true">
+    <resultMap id="InviTation" type="com.zt.entity.InviTation" autoMapping="true">
 
     </resultMap>
+
+    <!--private long id;-->
+    <!--private int type;//帖子类别-->
+    <!--private String title;//帖子标题-->
+    <!--private String content;//帖子内容-->
+    <!--private int likeNum;//用户喜欢数-->
+    <!--private Date creTime;//创建时间-->
+    <!--private int jugeNum;//用户评论数-->
+    <!--private int userId;//用户id-->
+    <!--private String userName;//用户名-->
+    <!--private String userIcon;//用户头像-->
+
+
+    <resultMap id="InviWithDetailImg" type="com.zt.model.InviWithDetailImg">
+        <id column="id" property="id"/>
+        <result column="type" property="type"/>
+        <result column="title" property="title"/>
+        <result column="content" property="content"/>
+        <result column="likeNum" property="likeNum"/>
+        <result column="creTime" property="creTime"/>
+        <result column="jugeNum" property="jugeNum"/>
+        <result column="userId" property="userId"/>
+        <result column="userName" property="userName"/>
+        <result column="userIcon" property="userIcon"/>
+
+        <collection property="detailImgs" ofType="com.zt.entity.DetailImg">
+
+            <result property="imgUrl" column="imgUrl"/>
+        </collection>
+    </resultMap>
+
 
     <select id="getAllInvi" resultType="com.zt.entity.InviTation">
         SELECT * from inviTation order by creTime DESC
@@ -28,5 +59,13 @@
     <select id="getIdByTitle" parameterType="string" resultType="long">
         SELECT id FROM inviTation where title=#{title}
     </select>
+
+    <select id="getInviByType" parameterType="int" resultMap="InviWithDetailImg" >
+        SELECT * from inviTation invi
+        ,detailImg de
+        where invi.id=de.inviId
+        and invi.type=#{type}
+    </select>
+
 
 </mapper>

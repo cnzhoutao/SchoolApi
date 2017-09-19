@@ -1,6 +1,7 @@
 package com.zt.dao.inner;
 
 import com.zt.entity.InviTation;
+import com.zt.model.InviWithDetailImg;
 import org.apache.ibatis.annotations.Param;
 
 import javax.annotation.security.PermitAll;
@@ -26,6 +27,13 @@ public interface InviTationDaoI {
      * @return
      */
     public List<Long> getIdByTitle(@Param(value = "title") String title);
+
+    /**
+     * 根据id获取帖子及其对应的细节图
+     * @param type
+     * @return
+     */
+    public List<InviWithDetailImg> getInviByType(@Param(value = "type") int type);
 
 
 }

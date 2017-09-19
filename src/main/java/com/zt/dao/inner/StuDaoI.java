@@ -46,4 +46,11 @@ public interface StuDaoI {
      * @return
      */
     public int checkPhoneNum(@Param(value = "phoneNum") String phoneNum);
+
+    /**
+     * 根据手机号获取一个学生的具体信息
+     * @param phoneNum
+     * @return
+     */
+    public Stu getStuByPhoneNum(@Param(value = "phoneNum") String phoneNum);
 }

@@ -21,5 +21,9 @@ http://localhost:8080/getAllInvi.html
 ```
 上传帖子的api
 ```html
-http://localhost:8080/uploadInvi.html?type=1&title="测试"&content="标题"&detailImg=list
+http://localhost:8080/uploadInvi.html?type=1&title="测试"&content="标题"&detailImg=list&phoneNum=15157603361
+```
+根据类别请求帖子及其对应的细节图
+```html
+http://localhost:8080/getInviAndImg.html?type=4
 ```

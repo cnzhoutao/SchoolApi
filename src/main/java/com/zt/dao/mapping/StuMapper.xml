@@ -39,4 +39,8 @@
     <select id="checkPhoneNum" resultType="int" parameterType="string">
         SELECT count(*) from stu where phoneNum=#{phoneNum}
     </select>
+    <!--根据手机号获取一个学生的信息-->
+    <select id="getStuByPhoneNum" parameterType="string" resultType="com.zt.entity.Stu">
+        SELECT * from stu where phoneNum = #{phoneNum}
+    </select>
 </mapper>

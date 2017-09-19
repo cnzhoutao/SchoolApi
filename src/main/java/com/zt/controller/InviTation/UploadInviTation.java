@@ -2,8 +2,10 @@ package com.zt.controller.InviTation;
 
 import com.zt.dao.inner.DetailImgDaoI;
 import com.zt.dao.inner.InviTationDaoI;
+import com.zt.dao.inner.StuDaoI;
 import com.zt.entity.DetailImg;
 import com.zt.entity.InviTation;
+import com.zt.entity.Stu;
 import com.zt.util.AjaxResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,8 +30,12 @@ public class UploadInviTation {
     @Autowired
     private DetailImgDaoI detailImgDaoI;
 
+    @Autowired
+    private StuDaoI stuDaoI;
+
     /**
-     * 保存一条帖子记录及其对应的细节图地址
+     * 保存帖子及其细节图
+     * @param phoneNum
      * @param type
      * @param title
      * @param content
@@ -39,17 +45,25 @@ public class UploadInviTation {
     @RequestMapping(value = "uploadInvi.html")
     @ResponseBody
     public AjaxResponse uploadInvi(
+            @RequestParam(value = "phoneNum")  String phoneNum,
             @RequestParam(value = "type") int type,
             @RequestParam(value = "title") String title,
             @RequestParam(value = "content") String content,
             @RequestParam(value = "detailImg") List<String> imgList) {
 
         try {
+
+            Stu stu=new Stu();
+            stu=stuDaoI.getStuByPhoneNum(phoneNum.trim());
             InviTation inviTation = new InviTation();
             inviTation.setType(type);
             inviTation.setContent(content);
             inviTation.setTitle(title);
+            inviTation.setUserIcon(stu.getIcon());
+            inviTation.setUserId((int) stu.getId());
+            inviTation.setUserName(stu.getUserName());
             inviTationDaoI.insertInvi(inviTation);
+
             List<Long> list;
 
             list = inviTationDaoI.getIdByTitle(title);
