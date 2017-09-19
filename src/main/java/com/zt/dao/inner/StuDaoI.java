@@ -52,5 +52,5 @@ public interface StuDaoI {
      * @param phoneNum
      * @return
      */
-    public Stu getStuByPhoneNum(@Param(value = "phoneNum") String phoneNum);
+    public List<Stu> getStuByPhoneNum(@Param(value = "phoneNum") String phoneNum);
 }

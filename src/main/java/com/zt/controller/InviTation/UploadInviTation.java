@@ -53,8 +53,20 @@ public class UploadInviTation {
 
         try {
 
-            Stu stu=new Stu();
-            stu=stuDaoI.getStuByPhoneNum(phoneNum.trim());
+
+            List<Stu> listStu=stuDaoI.getStuByPhoneNum(phoneNum.trim());
+            System.err.println("开始输出学生信息：");
+            for(Stu stu:listStu){
+                System.err.println(stu);
+            }
+
+            if(listStu.size()==0){
+                return AjaxResponse.failure(0,"该同学的信息不存在",null);
+            }
+
+            Stu stu=listStu.get(listStu.size()-1);
+
+
             InviTation inviTation = new InviTation();
             inviTation.setType(type);
             inviTation.setContent(content);

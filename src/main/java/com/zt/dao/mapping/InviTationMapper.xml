@@ -48,11 +48,17 @@
         INSERT into inviTation(
           type,
           title,
-          content
+          content,
+          userId,
+          userName,
+          userIcon
         ) VALUE (
           #{type},
         #{title},
-        #{content}
+        #{content},
+        #{userId},
+        #{userName},
+        #{userIcon}
         )
     </insert>
 
