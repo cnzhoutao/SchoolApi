@@ -73,5 +73,27 @@
           where inviTation.type=#{type}
     </select>
 
+    <!--该条帖子的点赞数+1-->
+
+    <update id="likeNumAdd1" >
+        UPDATE inviTation set likeNum = likeNum+1 where id=#{inviId}
+    </update>
+    <!--该帖的点赞数-1-->
+    <update id="likeNumSub1">
+        UPDATE inviTation set likeNum = likeNum-1 where id=#{inviId}
+    </update>
+
+    <select id="getInviId" parameterType="long" resultMap="InviWithDetailImg">
+        SELECT * from inviTation
+         left join detailImg on
+         inviTation.id=detailImg.inviId
+          where inviTation.id=#{inviId}
+    </select>
+
+
+    <update id="viewNumAdd1" parameterType="long" >
+        UPDATE inviTation set viewNum = viewNum+1 where id=#{inviId}
+    </update>
+
 
 </mapper>

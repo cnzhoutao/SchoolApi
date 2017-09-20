@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zt.dao.inner.InviLikeDaoI">
+
+    <resultMap id="InviLike" type="com.zt.entity.InviLike" autoMapping="true">
+
+    </resultMap>
+    <!--插入一条点赞记录-->
+    <insert id="insertLike" parameterType="com.zt.entity.InviLike">
+        INSERT INTO inviLike(
+           inviId,
+            userId,
+            userName,
+            userIcon
+        )VALUE (
+           #{inviId},
+           #{userId},
+           #{userName},
+           #{userIcon}
+        )
+    </insert>
+
+    <!--根据inviId和userId删除一条点赞记录-->
+    <delete id="deleteALike" >
+        DELETE from inviLike
+        where inviId=#{inviId} and userId=#{userId}
+    </delete>
+
+    <!--根据userId和inviId判断用户是否点赞过某一篇帖子-->
+
+    <select id="getCountByInviId" resultType="long">
+        SELECT count(*) from inviLike where userId=#{userId} and inviId=#{inviId}
+    </select>
+</mapper>

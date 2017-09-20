@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zt.dao.inner.InviSaveDaoI">
+
+    <resultMap id="InviSave" type="com.zt.entity.InviSave" autoMapping="true">
+
+    </resultMap>
+    <!--插入一条点赞记录-->
+    <insert id="insertSave" parameterType="com.zt.entity.InviLike">
+        INSERT INTO inviSave(
+        inviId,
+        userId,
+        userName,
+        userIcon
+        )VALUE (
+        #{inviId},
+        #{userId},
+        #{userName},
+        #{userIcon}
+        )
+    </insert>
+
+    <select id="getCountByInviIdAndUserId" resultType="long">
+        SELECT count(*) from inviSave
+         where userId=#{userId} and inviId=#{inviId}
+    </select>
+
+    <delete id="deleteSave">
+        DELETE from inviSave where userId=#{userId} and inviId=#{inviId}
+    </delete>
+
+
+
+</mapper>

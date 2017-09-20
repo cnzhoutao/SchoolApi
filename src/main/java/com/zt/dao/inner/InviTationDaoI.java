@@ -35,5 +35,28 @@ public interface InviTationDaoI {
      */
     public List<InviWithDetailImg> getInviByType(@Param(value = "type") int type);
 
+    /**
+     * 帖子点赞数+1
+     * @param inviId
+     */
+    public void likeNumAdd1(@Param(value = "inviId") long inviId);
 
+    /**
+     * 帖子数-1
+     * @param inviId
+     */
+    public void likeNumSub1(@Param(value = "inviId") long inviId);
+
+    /**
+     * 根据id获取一条具体的帖子
+     * @param inviId
+     * @return
+     */
+    public InviWithDetailImg getInviId(@Param(value = "inviId") long inviId);
+
+    /**
+     * 根据inviId让对应帖子的浏览量+1
+     * @param inviId
+     */
+    public void viewNumAdd1(@Param(value = "inviId") long inviId);
 }
