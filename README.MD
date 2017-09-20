@@ -27,3 +27,7 @@ http://localhost:8080/uploadInvi.html?type=1&title="测试"&content="标题"&det
 ```html
 http://localhost:8080/getInviAndImg.html?type=4
 ```
+上传不含细节图的api
+```html
+http://localhost:8080/uploadInviText.html?type=1&title="标题"&content="neibfdg"&phoneNum=1
+```

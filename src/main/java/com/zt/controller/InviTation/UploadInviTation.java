@@ -52,8 +52,6 @@ public class UploadInviTation {
             @RequestParam(value = "detailImg") List<String> imgList) {
 
         try {
-
-
             List<Stu> listStu=stuDaoI.getStuByPhoneNum(phoneNum.trim());
             System.err.println("开始输出学生信息：");
             for(Stu stu:listStu){
@@ -79,18 +77,58 @@ public class UploadInviTation {
             List<Long> list;
 
             list = inviTationDaoI.getIdByTitle(title);
+                for(String s:imgList){
+                    DetailImg detailImg=new DetailImg();
+                    detailImg.setImgUrl(s);
+                    detailImg.setInviId(list.get(list.size()-1));
+                    detailImgDaoI.insertDetailImg(detailImg);
+                }
 
-            for(String s:imgList){
-                DetailImg detailImg=new DetailImg();
-                detailImg.setImgUrl(s);
-                detailImg.setInviId(list.get(list.size()-1));
-                detailImgDaoI.insertDetailImg(detailImg);
-            }
             return AjaxResponse.success(1, "保存帖子成功", null);
         } catch (Exception e) {
             System.err.println("保存帖子出bug：" + e.toString());
             return AjaxResponse.failure(0, "保存帖子出错", null);
         }
+    }
 
+    /**
+     * 上传没有细节图的帖子
+     * @param phoneNum
+     * @param type
+     * @param title
+     * @param content
+     * @return
+     */
+    @RequestMapping(value = "uploadInviText.html")
+    @ResponseBody
+    public AjaxResponse uploadInviWithOut(
+            @RequestParam(value = "phoneNum")  String phoneNum,
+            @RequestParam(value = "type") int type,
+            @RequestParam(value = "title") String title,
+            @RequestParam(value = "content") String content) {
+
+        try {
+            List<Stu> listStu=stuDaoI.getStuByPhoneNum(phoneNum.trim());
+            System.err.println("开始输出学生信息：");
+            for(Stu stu:listStu){
+                System.err.println(stu);
+            }
+            if(listStu.size()==0){
+                return AjaxResponse.failure(0,"该同学的信息不存在",null);
+            }
+            Stu stu=listStu.get(listStu.size()-1);
+            InviTation inviTation = new InviTation();
+            inviTation.setType(type);
+            inviTation.setContent(content);
+            inviTation.setTitle(title);
+            inviTation.setUserIcon(stu.getIcon());
+            inviTation.setUserId((int) stu.getId());
+            inviTation.setUserName(stu.getUserName());
+            inviTationDaoI.insertInvi(inviTation);
+            return AjaxResponse.success(1, "保存帖子成功", null);
+        } catch (Exception e) {
+            System.err.println("保存帖子出bug：" + e.toString());
+            return AjaxResponse.failure(0, "保存帖子出错", null);
+        }
     }
 }
