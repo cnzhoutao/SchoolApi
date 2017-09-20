@@ -65,12 +65,12 @@
     <select id="getIdByTitle" parameterType="string" resultType="long">
         SELECT id FROM inviTation where title=#{title}
     </select>
-
+    <!--使用左连接避免当细节图没有就不显示的状况-->
     <select id="getInviByType" parameterType="int" resultMap="InviWithDetailImg" >
-        SELECT * from inviTation invi
-        ,detailImg de
-        where invi.id=de.inviId
-        and invi.type=#{type}
+          select * from
+          inviTation left join detailImg
+          on inviTation.id=detailImg.inviId
+          where inviTation.type=#{type}
     </select>
 
 
