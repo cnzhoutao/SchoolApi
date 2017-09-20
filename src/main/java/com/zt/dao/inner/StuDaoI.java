@@ -53,4 +53,13 @@ public interface StuDaoI {
      * @return
      */
     public List<Stu> getStuByPhoneNum(@Param(value = "phoneNum") String phoneNum);
+
+
+    /**
+     * 后台登录
+     * @param phoneNum
+     * @param pwd
+     * @return
+     */
+    public int checkBackLogin(@Param(value = "phoneNum")String phoneNum,@Param(value = "pwd") String pwd);
 }

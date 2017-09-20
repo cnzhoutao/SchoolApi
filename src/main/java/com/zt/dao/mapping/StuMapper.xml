@@ -43,4 +43,12 @@
     <select id="getStuByPhoneNum" parameterType="string" resultType="com.zt.entity.Stu">
         SELECT * from stu where phoneNum = #{phoneNum}
     </select>
+
+    <select id="checkBackLogin" resultType="int">
+        SELECT count(*) from stu
+        where
+        phoneNum=#{phoneNum}
+        and pwd=#{pwd}
+        and isAdmin='1'
+    </select>
 </mapper>
