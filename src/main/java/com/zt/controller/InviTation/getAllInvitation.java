@@ -1,11 +1,9 @@
 package com.zt.controller.InviTation;
 
-import com.zt.dao.inner.InviLikeDaoI;
-import com.zt.dao.inner.InviSaveDaoI;
-import com.zt.dao.inner.InviTationDaoI;
-import com.zt.dao.inner.StuDaoI;
+import com.zt.dao.inner.*;
 import com.zt.entity.DetailImg;
 import com.zt.entity.InviTation;
+import com.zt.entity.JugeInvi;
 import com.zt.entity.Stu;
 import com.zt.model.InviWithDetailImg;
 import com.zt.util.AjaxResponse;
@@ -35,6 +33,9 @@ public class getAllInvitation {
 
     @Autowired
     private InviSaveDaoI inviSaveDaoI;
+
+    @Autowired
+    private InviJugeDaoI inviJugeDaoI;
 
     @RequestMapping(value = "getAllInvi.html")
     @ResponseBody
@@ -101,11 +102,15 @@ public class getAllInvitation {
             }
             InviWithDetailImg inviTation = inviTationDaoI.getInviId(inviId);
 
+
+            List<JugeInvi> jugeList=inviJugeDaoI.getJugeByInviId(inviId);
+
             Map<String, Object> data = new HashMap<String, Object>();
 
             data.put("inviTaion", inviTation);
             data.put("isLike", isLike);
             data.put("isSave", isSave);
+            data.put("jugeList",jugeList);
             return ApiResponse.success(1, "获取帖子详细内容成功", data);
 
         } catch (Exception e) {
@@ -115,6 +120,12 @@ public class getAllInvitation {
 
     }
 
+    /**
+     * 根据帖子类别返回某个具体用户所发的帖子
+     * @param phoneNum
+     * @param type
+     * @return
+     */
     @RequestMapping(value = "getInviByType.html")
     @ResponseBody
     public AjaxResponse getInviByType(@RequestParam(value = "phoneNum") String phoneNum

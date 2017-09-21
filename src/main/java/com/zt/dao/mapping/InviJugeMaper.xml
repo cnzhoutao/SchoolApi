@@ -25,4 +25,8 @@
         )
     </insert>
 
+
+    <select id="getJugeByInviId" parameterType="long" resultType="com.zt.entity.JugeInvi">
+        SELECT * from jugeInvi where inviId=#{inviId}
+    </select>
 </mapper>
