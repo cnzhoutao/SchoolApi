@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zt.dao.inner.InviJugeDaoI">
+
+    <resultMap id="InviLike" type="com.zt.entity.JugeInvi" autoMapping="true">
+
+    </resultMap>
+
+    <insert id="insertJuge" parameterType="com.zt.entity.JugeInvi">
+        INSERT INTO jugeInvi(
+            inviId,
+            userId,
+            userName,
+            userIcon,
+            content
+        )VALUE (
+        #{inviId},
+        #{userId},
+        #{userName},
+        #{userIcon},
+        #{content}
+        )
+    </insert>
+
+</mapper>
