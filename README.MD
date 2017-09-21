@@ -53,4 +53,92 @@ http://localhost:8080/cancelLike.html?inviId=4&phoneNum=1
 ```html
 http://localhost:8080/getInviById.html?inviId=19&phoneNum=1
 ```
+用户根据类别请求自己的帖子
+```html
+http://localhost:8080/getInviByType.html?type=2&phoneNum=1
+```
+
+**表结构**
+detailImg
+```html
+	id
+	invild  //对应帖子的细节图
+ imgUrl   
+```
+inviLike
+```html
+	id
+	invild 
+ userId
+ username
+ userIcon
+ creTime
+```
+
+inviSave
+```html
+id
+inviId
+userId
+username
+userIcon
+creTime
+```
+inviTation
+```html
+id
+type 
+title
+content
+likeNum    //用户点赞数
+creTime
+jugeNum   //用户评论数
+userId
+userName
+userIcon   //用户头像
+viewNum  //浏览量
+
+```
+jugeInvi
+```html
+id
+inviId    //帖子id
+username    //评论者名字
+userId      //评论者id
+userIcon    //评论者头像
+content    //内容
+creTime
+
+```
+
+province
+```html
+id
+pName
+```
+
+
+schoolName
+```html
+id
+pId
+scName
+```
+stu
+```html
+id
+username   //用户名
+pwd        //密码
+phoneNum   //手机号
+icon      //用户头像
+creTime   //注册时间
+school    //学校名称
+msg      //用户个人简介
+age
+gender	//性别
+isAdmin  //0表示普通用户,1表示管理员
+```
+
+
+
 

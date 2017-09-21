@@ -16,12 +16,12 @@ public class UploadUtil {
 
     private static String endpoint = "http://oss-cn-shanghai.aliyuncs.com";
 
-    private static String accessKeyId = "LTAIdK2pZI2HWZiN";
+    private static String accessKeyId = "LTAIUAsV96TStlJl";
 
-    private static String accessKeySecret = "X106ovBnsyTyIzwTCaByNEDwGd6tCt";
+    private static String accessKeySecret = "E5hZhwpMllitZTacBrbOeyIjSWmAtO";
 
 
-    private static String bucketName = "graduate-zt";
+    private static String bucketName = "inscho";
 
     /**
      * 用流的方式上传图片到oss

@@ -20,19 +20,14 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
-        <div class="layui-logo">layui 后台布局</div>
+        <div class="layui-logo">校园狸后台管理</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a href="">控制台</a></li>
-            <li class="layui-nav-item"><a href="">商品管理</a></li>
-            <li class="layui-nav-item"><a href="">用户</a></li>
+            <li class="layui-nav-item layui-this"><a href="">发表新闻</a></li>
+            <li class="layui-nav-item"><a href="">用户管理</a></li>
+            <li class="layui-nav-item"><a href="">帖子管理</a></li>
             <li class="layui-nav-item">
                 <a href="javascript:;">其它系统</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="">邮件管理</a></dd>
-                    <dd><a href="">消息管理</a></dd>
-                    <dd><a href="">授权管理</a></dd>
-                </dl>
             </li>
         </ul>
         <ul class="layui-nav layui-layout-right">
@@ -53,7 +48,7 @@
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">所有商品</a>
                     <dl class="layui-nav-child">
@@ -77,23 +72,77 @@
         </div>
     </div>
 
+
     <div class="layui-body">
-        <!-- 内容主体区域 -->
-        <div style="padding: 15px;">内容主体区域</div>
+        <div class="layui-form-item" style="margin-top: 20px; ">
+            <div class="layui-input-inline input-custom-width">
+                <input type="text" name="title" lay-verify="required" placeholder="请输入一个标题" autocomplete="off"
+                       class="layui-input title">
+            </div>
+        </div>
+
+        <textarea class="layui-textarea" id="LAY_demo1" style="display: none">
+            请输入你的文章
+        </textarea>
+
+        <div class="site-demo-button" style="margin-top: 20px;">
+            <button class="layui-btn site-demo-layedit submit" data-type="content">提交</button>
+        </div>
     </div>
 
+    <%--footer开始--%>
     <div class="layui-footer">
         <!-- 底部固定区域 -->
         © layui.com - 底部固定区域
     </div>
+    <%--footer结束--%>
+
+
 </div>
 <script></script>
 <script>
-    //JavaScript代码区域
-    layui.use('element', function(){
-        var element = layui.element;
+    layui.use(['layedit', 'jquery','layer','element','upload'], function () {
+        var layedit = layui.layedit
+            , $ = layui.jquery
+            ,layer=layui.layer
+            ,upload = layui.upload;
+        var imgName;
+        //配置图片上传接口
+        layedit.set({
+            height: 800,
+            uploadImage: {
+                url: '<%=basePath%>upload.html' //接口url
+            }
+        });
+
+
+        //构建一个默认的编辑器
+        var index = layedit.build('LAY_demo1');
+//            提交用户编辑的文章
+        $('.submit').click(function () {
+
+            if($('.title').val().trim().length=0){
+                layer.msg("请先输入标题!",{icon:2,anim:6,time:2000});
+                return;
+            }
+            //提交文章到后台
+            $.post('<%=basePath%>saveArticle.html',{
+                title:$('.title').val(),
+                content:layedit.getContent(index)
+            },function (data) {
+                if(data.code==1){
+                    layer.msg("保存文章成功",{icon:1,anim:6,time:2000},function () {
+                        location.reload();
+                    });
+                }else {
+                    layer.msg(data.msg,{icon:2,anim:6,time:2000});
+                }
+            })
+        });
 
     });
+
+
 </script>
 </body>
 </html>

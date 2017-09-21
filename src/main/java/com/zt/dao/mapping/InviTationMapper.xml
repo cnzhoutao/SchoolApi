@@ -66,7 +66,7 @@
         SELECT id FROM inviTation where title=#{title}
     </select>
     <!--使用左连接避免当细节图没有就不显示的状况-->
-    <select id="getInviByType" parameterType="int" resultMap="InviWithDetailImg" >
+    <select id="getInviByType" parameterType="int" resultMap="InviWithDetailImg">
           select * from
           inviTation left join detailImg
           on inviTation.id=detailImg.inviId
@@ -75,7 +75,7 @@
 
     <!--该条帖子的点赞数+1-->
 
-    <update id="likeNumAdd1" >
+    <update id="likeNumAdd1">
         UPDATE inviTation set likeNum = likeNum+1 where id=#{inviId}
     </update>
     <!--该帖的点赞数-1-->
@@ -91,9 +91,20 @@
     </select>
 
 
-    <update id="viewNumAdd1" parameterType="long" >
+    <update id="viewNumAdd1" parameterType="long">
         UPDATE inviTation set viewNum = viewNum+1 where id=#{inviId}
     </update>
+
+    <select id="getInviBuTypeAndUserId" resultMap="InviWithDetailImg">
+        SELECT * from inviTation
+        left join detailImg on
+        inviTation.id=detailImg.inviId
+        where
+        type=#{type}
+        and
+        userId=#{userId}
+
+    </select>
 
 
 </mapper>

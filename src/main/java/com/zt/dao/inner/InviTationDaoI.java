@@ -1,5 +1,6 @@
 package com.zt.dao.inner;
 
+import com.zt.entity.DetailImg;
 import com.zt.entity.InviTation;
 import com.zt.model.InviWithDetailImg;
 import org.apache.ibatis.annotations.Param;
@@ -59,4 +60,12 @@ public interface InviTationDaoI {
      * @param inviId
      */
     public void viewNumAdd1(@Param(value = "inviId") long inviId);
+
+    /**
+     * 根据type和userId请求某个用户自己在某一类别下的所有帖子
+     * @param type
+     * @param userId
+     * @return
+     */
+    public List<DetailImg> getInviBuTypeAndUserId(@Param(value = "type") long type,@Param(value = "userId") long userId);
 }

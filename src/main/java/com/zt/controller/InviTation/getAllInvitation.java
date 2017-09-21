@@ -4,6 +4,7 @@ import com.zt.dao.inner.InviLikeDaoI;
 import com.zt.dao.inner.InviSaveDaoI;
 import com.zt.dao.inner.InviTationDaoI;
 import com.zt.dao.inner.StuDaoI;
+import com.zt.entity.DetailImg;
 import com.zt.entity.InviTation;
 import com.zt.entity.Stu;
 import com.zt.model.InviWithDetailImg;
@@ -74,6 +75,7 @@ public class getAllInvitation {
 
     /**
      * 根据inviId和stuId判断用户是否收藏过某篇帖子或者点赞过某篇帖子
+     *
      * @param inviId
      * @param phoneNum
      * @return
@@ -90,26 +92,44 @@ public class getAllInvitation {
 
             long likeCount = inviLikeDaoI.getCountByInviId(stu.getId(), inviId);
             if (likeCount >= 1) {
-                isLike=true;
+                isLike = true;
             }
 
-            long saveCount=inviSaveDaoI.getCountByInviIdAndUserId(inviId,stu.getId());
-            if(saveCount>=1){
-                isSave=true;
+            long saveCount = inviSaveDaoI.getCountByInviIdAndUserId(inviId, stu.getId());
+            if (saveCount >= 1) {
+                isSave = true;
             }
             InviWithDetailImg inviTation = inviTationDaoI.getInviId(inviId);
 
-            Map<String,Object> data=new HashMap<String,Object>();
+            Map<String, Object> data = new HashMap<String, Object>();
 
-            data.put("inviTaion",inviTation);
-            data.put("isLike",isLike);
-            data.put("isSave",isSave);
-            return ApiResponse.success(1,"获取帖子详细内容成功",data);
+            data.put("inviTaion", inviTation);
+            data.put("isLike", isLike);
+            data.put("isSave", isSave);
+            return ApiResponse.success(1, "获取帖子详细内容成功", data);
 
         } catch (Exception e) {
             System.err.println("根据帖子id获取帖子失败:" + e.toString());
             return ApiResponse.failure(0, "根据id获取帖子失败", null);
         }
 
+    }
+
+    @RequestMapping(value = "getInviByType.html")
+    @ResponseBody
+    public AjaxResponse getInviByType(@RequestParam(value = "phoneNum") String phoneNum
+            , @RequestParam(value = "type") int type) {
+        try {
+            List<Stu> stuList = stuDaoI.getStuByPhoneNum(phoneNum);
+            Stu stu = stuList.get(stuList.size() - 1);
+            List<DetailImg> list = inviTationDaoI.getInviBuTypeAndUserId(type, stu.getId());
+            Map<String,Object> data=new HashMap<String,Object>();
+            data.put("list",list);
+            return AjaxResponse.success(1,"根据类别及用户请求帖子成功",data);
+
+        } catch (Exception e) {
+            System.err.println("根据类别及用户id请求帖子出错:" + e.toString());
+            return AjaxResponse.failure(0, "请求帖子出错", null);
+        }
     }
 }
