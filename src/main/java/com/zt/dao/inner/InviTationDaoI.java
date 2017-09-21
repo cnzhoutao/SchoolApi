@@ -68,4 +68,11 @@ public interface InviTationDaoI {
      * @return
      */
     public List<DetailImg> getInviBuTypeAndUserId(@Param(value = "type") long type,@Param(value = "userId") long userId);
+
+    /**
+     * 获取用户个人收藏的帖子
+     * @param userId
+     * @return
+     */
+    public List<InviWithDetailImg> getSavedInvi(@Param(value = "userId") long userId);
 }

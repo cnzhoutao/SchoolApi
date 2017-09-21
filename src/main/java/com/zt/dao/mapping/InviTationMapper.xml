@@ -107,4 +107,15 @@
     </select>
 
 
+    <!--获取用户收藏的帖子-->
+    <select id="getSavedInvi" parameterType="long" resultMap="InviWithDetailImg">
+          select * from
+          inviTation left join detailImg on inviTation.id=detailImg.inviId
+          where
+          inviTation.id in(
+          select inviId  from inviSave
+          where userId=#{userId}
+          );
+    </select>
+
 </mapper>

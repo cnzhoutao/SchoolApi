@@ -61,6 +61,10 @@ http://localhost:8080/getInviByType.html?type=2&phoneNum=1
 ```html
 http://localhost:8080/juge.html?inviId=4&phoneNum=1&content=评论内容
 ```
+获取用户个人收藏的帖子
+```html
+http://localhost:8080/getSave.html?phoneNum=1
+```
 
 **表结构**
 detailImg

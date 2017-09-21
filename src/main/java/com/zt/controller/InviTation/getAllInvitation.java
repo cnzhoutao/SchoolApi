@@ -143,4 +143,22 @@ public class getAllInvitation {
             return AjaxResponse.failure(0, "请求帖子出错", null);
         }
     }
+
+    @RequestMapping(value = "getSave.html")
+    @ResponseBody
+    public AjaxResponse getSave(@RequestParam(value = "phoneNum")String phoneNum){
+
+        try {
+            List<Stu> stuList=stuDaoI.getStuByPhoneNum(phoneNum);
+            Stu stu = stuList.get(stuList.size() - 1);
+            List<InviWithDetailImg> list=inviTationDaoI.getSavedInvi(stu.getId());
+            Map<String,Object> data=new HashMap<String,Object>();
+            data.put("list",list);
+            return AjaxResponse.success(1,"请求用户个人收藏的帖子成功",data);
+
+        }catch (Exception e){
+            System.err.println("获取用户个人收藏的帖子是把你："+e.toString());
+            return AjaxResponse.failure(0,"获取收藏的帖子失败",null);
+        }
+    }
 }
