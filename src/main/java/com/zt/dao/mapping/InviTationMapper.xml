@@ -32,6 +32,7 @@
         <result column="userId" property="userId"/>
         <result column="userName" property="userName"/>
         <result column="userIcon" property="userIcon"/>
+        <result column="viewNum" property="viewNum"/>
 
         <collection property="detailImgs" ofType="com.zt.entity.DetailImg">
 

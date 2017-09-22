@@ -18,6 +18,7 @@ public class InviWithDetailImg implements Serializable {
     private int userId;//用户id
     private String userName;//用户名
     private String userIcon;//用户头像
+    private long viewNum;
     List<DetailImg> detailImgs;
 
 
@@ -39,8 +40,17 @@ public class InviWithDetailImg implements Serializable {
                 ", userId=" + userId +
                 ", userName='" + userName + '\'' +
                 ", userIcon='" + userIcon + '\'' +
+                ", viewNum=" + viewNum +
                 ", detailImgs=" + detailImgs +
                 '}';
+    }
+
+    public long getViewNum() {
+        return viewNum;
+    }
+
+    public void setViewNum(long viewNum) {
+        this.viewNum = viewNum;
     }
 
     public long getId() {
