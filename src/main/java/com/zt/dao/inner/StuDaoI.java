@@ -80,4 +80,26 @@ public interface StuDaoI {
      * @param userId
      */
     public void deleteUser(@Param(value = "userId") long userId);
+
+    /**
+     * 修改用户的年龄
+     * @param age
+     * @param userId
+     */
+    public void updateAge(@Param(value = "age") int age,@Param(value = "userId") long userId);
+
+    /**
+     * 修改用户的性别
+     * @param gender
+     * @param userId
+     */
+    public void updateGender(@Param(value = "gender") String gender,@Param(value = "userId") long userId);
+
+    /**
+     * 用户修改个人简介
+     * @param msg
+     * @param userId
+     */
+    public void updateMsg(@Param(value = "msg") String msg,@Param(value = "userId") long userId);
+
 }
