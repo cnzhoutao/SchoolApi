@@ -102,6 +102,7 @@ public class getAllInvitation {
             }
             InviWithDetailImg inviTation = inviTationDaoI.getInviId(inviId);
 
+            inviTationDaoI.viewNumAdd1(inviId);
 
             List<JugeInvi> jugeList=inviJugeDaoI.getJugeByInviId(inviId);
 
