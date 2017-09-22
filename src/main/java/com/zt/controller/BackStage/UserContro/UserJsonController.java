@@ -29,4 +29,20 @@ public class UserJsonController {
         }
 
     }
+
+    @RequestMapping(value = "deleteUser.html")
+    @ResponseBody
+    public AjaxResponse deleteUser(@RequestParam(value = "userId") long usrId){
+
+        try {
+
+            stuDaoI.deleteUser(usrId);
+            return AjaxResponse.success(1,"删除用户成功",null);
+
+        }catch (Exception e){
+            System.err.println("删除用户失败"+e.toString());
+            return AjaxResponse.failure(0,"失败",null);
+        }
+
+    }
 }

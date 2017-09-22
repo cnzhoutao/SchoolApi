@@ -108,6 +108,9 @@
                         <a class="layui-btn layui-btn-danger layui-btn-mini update" flag="${stu.id}">
                             提拔为管理员
                         </a>
+                        <a class="layui-btn layui-btn-danger layui-btn-mini delete" flag="${stu.id}">
+                            删除
+                        </a>
 
                     </td>
                 </tr>
@@ -136,8 +139,8 @@
         var
             $ = layui.jquery
             , layer = layui.layer;
+//        将普通用户提拔为管理员
         $('.update').click(function () {
-
             $.post('<%=basePath%>upUser.html',
                 {userId: this.getAttribute("flag")}
                 , function (data) {
@@ -152,6 +155,20 @@
 
         });
 
+        $('.delete').click(function () {
+
+            $.post("<%=basePath%>deleteUser.html",{userId:this.getAttribute("flag")},function (data) {
+                if(data.code==1){
+                    layer.msg("删除成功",{icon:1,anim:6,time:500},function () {
+                        location.reload();
+                    });
+                }else {
+                    layer.msg('网络不佳，请稍后重试',{icon:2,anim:6,time:500});
+                }
+
+            });
+
+        })
 
     });
 

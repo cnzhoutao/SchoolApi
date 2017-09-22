@@ -59,4 +59,8 @@
     <update id="UpUser" parameterType="long">
         UPDATE stu set isAdmin = '1' where id =#{userId}
     </update>
+
+    <delete id="deleteUser" parameterType="long">
+        DELETE from stu where id=#{userId}
+    </delete>
 </mapper>

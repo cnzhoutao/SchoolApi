@@ -74,4 +74,10 @@ public interface StuDaoI {
      * @param userId
      */
     public void UpUser(@Param(value = "userId") long userId);
+
+    /**
+     * 删除一个用户
+     * @param userId
+     */
+    public void deleteUser(@Param(value = "userId") long userId);
 }
