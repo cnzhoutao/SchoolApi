@@ -78,6 +78,35 @@ public class UpdatePerMsgController {
 
     }
 
+
+    /**
+     * 用户修改性别
+     *
+     * @param phoneNum
+     * @param userName
+     * @return
+     */
+    @RequestMapping(value = "updateUserName.html")
+    @ResponseBody
+    public ApiResponse updateUserName(@RequestParam(value = "phoneNum") String phoneNum
+            , @RequestParam(value = "userName") String userName) {
+        try {
+            List<Stu> stuList = stuDaoI.getStuByPhoneNum(phoneNum);
+            Stu stu = stuList.get(stuList.size() - 1);
+            stuDaoI.updateUserName(userName, stu.getId());
+            inviTationDaoI.updateUserName(userName,stu.getId());
+            inviSaveDaoI.updateUserName(userName,stu.getId());
+            inviLikeDaoI.updateUserName(userName,stu.getId());
+            inviJugeDaoI.updateUserName(userName,stu.getId());
+            return ApiResponse.success(1, "修改用户名成功", null);
+        } catch (Exception e) {
+            System.err.println("用户修改用户名失败:" + e.toString());
+            return ApiResponse.failure(0, "修改用户名失败", null);
+        }
+
+    }
+
+
     /**
      * 用户修改自己的个人简介
      *
@@ -145,7 +174,7 @@ public class UpdatePerMsgController {
             //更改帖子表中的头像
             inviTationDaoI.updateIcon(icon, stu.getId());
             //更改评论表中的头像
-            inviJugeDaoI.updateIcon(icon,stu.getId());
+            inviJugeDaoI.updateIcon(icon, stu.getId());
 
             return ApiResponse.success(1, "用户更改头像成功", null);
         } catch (Exception e) {

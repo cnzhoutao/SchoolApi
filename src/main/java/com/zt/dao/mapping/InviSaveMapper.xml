@@ -36,5 +36,9 @@
         UPDATE inviSave set userIcon=#{icon} where userId=#{userId}
     </update>
 
+    <update id="updateUserName" >
+        UPDATE inviSave set userName=#{userName} where userId=#{userId}
+    </update>
+
 
 </mapper>

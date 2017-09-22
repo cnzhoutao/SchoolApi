@@ -89,4 +89,12 @@ public interface InviTationDaoI {
      */
     public void updateIcon(@Param(value = "icon") String icon,@Param(value = "userId") long userId);
 
+
+    /**
+     * 修改用户名
+     * @param userName
+     */
+    public void updateUserName(@Param(value = "userName") String userName,@Param(value = "userId") long userId);
+
+
 }

@@ -33,4 +33,10 @@
     <update id="updateIcon" >
         UPDATE jugeInvi set userIcon=#{icon} where userId=#{userId}
     </update>
+
+    <update id="updateUserName" >
+        UPDATE jugeInvi set userName=#{userName} where userId=#{userId}
+    </update>
+
+
 </mapper>

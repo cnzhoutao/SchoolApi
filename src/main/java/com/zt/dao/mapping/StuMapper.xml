@@ -80,4 +80,8 @@
         UPDATE stu set icon=#{icon} where id=#{userId}
     </update>
 
+    <update id="updateUserName">
+        UPDATE stu set userName where id=#{userId}
+    </update>
+
 </mapper>

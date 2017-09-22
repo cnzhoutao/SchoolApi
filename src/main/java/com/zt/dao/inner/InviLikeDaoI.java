@@ -35,4 +35,11 @@ public interface InviLikeDaoI {
      * @param userId
      */
     public void updateIcon(@Param(value = "icon") String icon,@Param(value = "userId") long userId);
+
+    /**
+     * 更改用户名
+     * @param userName
+     * @param usrId
+     */
+    public void updateUserName(@Param(value = "userName") String userName,@Param(value = "userId") long usrId);
 }
