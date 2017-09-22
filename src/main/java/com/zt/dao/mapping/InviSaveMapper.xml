@@ -32,6 +32,9 @@
         DELETE from inviSave where userId=#{userId} and inviId=#{inviId}
     </delete>
 
+    <update id="updateIcon" >
+        UPDATE inviSave set userIcon=#{icon} where userId=#{userId}
+    </update>
 
 
 </mapper>

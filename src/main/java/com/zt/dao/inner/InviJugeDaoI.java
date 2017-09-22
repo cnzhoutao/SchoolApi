@@ -19,4 +19,12 @@ public interface InviJugeDaoI {
      * @return
      */
     public List<JugeInvi> getJugeByInviId(@Param(value = "inviId") long inviId);
+
+    /**
+     * 更改用户头像
+     * @param icon
+     * @param userId
+     */
+    public void updateIcon(@Param(value = "icon") String icon,@Param(value = "userId") long userId);
+
 }

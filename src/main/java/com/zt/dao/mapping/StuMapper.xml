@@ -75,4 +75,9 @@
     <update id="updateMsg">
         UPDATE stu set msg=#{msg} where id=#{userId}
     </update>
+
+    <update id="updateIcon">
+        UPDATE stu set icon=#{icon} where id=#{userId}
+    </update>
+
 </mapper>

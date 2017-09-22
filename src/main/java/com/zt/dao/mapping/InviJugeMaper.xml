@@ -29,4 +29,8 @@
     <select id="getJugeByInviId" parameterType="long" resultType="com.zt.entity.JugeInvi">
         SELECT * from jugeInvi where inviId=#{inviId}
     </select>
+
+    <update id="updateIcon" >
+        UPDATE jugeInvi set userIcon=#{icon} where userId=#{userId}
+    </update>
 </mapper>

@@ -122,4 +122,8 @@
         DELETE from inviTation where id=#{inviId}
     </delete>
 
+    <update id="updateIcon" >
+        UPDATE inviTation set userIcon=#{icon} where userId=#{userId}
+    </update>
+
 </mapper>

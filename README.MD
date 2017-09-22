@@ -85,6 +85,10 @@ http://localhost:8080/updateMsg.html?phoneNum=1&msg=个人简介
 ```html
 http://localhost:8080/getInfoByPhone.html?phoneNum=1
 ```
+更改头像api
+```html
+http://localhost:8080/updateIcon.html?phoneNum=1&icon=icon.png
+```
 
 
 

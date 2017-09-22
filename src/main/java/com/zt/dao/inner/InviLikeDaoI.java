@@ -28,4 +28,11 @@ public interface InviLikeDaoI {
      * @return
      */
     public long getCountByInviId(@Param(value = "userId") long userId,@Param(value = "inviId") long inviId);
+
+    /**
+     * 更改用户头像
+     * @param icon
+     * @param userId
+     */
+    public void updateIcon(@Param(value = "icon") String icon,@Param(value = "userId") long userId);
 }

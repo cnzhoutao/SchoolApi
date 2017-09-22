@@ -102,4 +102,11 @@ public interface StuDaoI {
      */
     public void updateMsg(@Param(value = "msg") String msg,@Param(value = "userId") long userId);
 
+    /**
+     * 修改用户头像
+     * @param icon
+     * @param userId
+     */
+    public void updateIcon(@Param(value = "icon") String icon,@Param(value = "userId") long userId);
+
 }

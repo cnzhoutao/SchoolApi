@@ -34,4 +34,9 @@
     <select id="getCountByInviId" resultType="long">
         SELECT count(*) from inviLike where userId=#{userId} and inviId=#{inviId}
     </select>
+
+    <update id="updateIcon" >
+        UPDATE inviLike set userIcon=#{icon} where userId=#{userId}
+    </update>
+
 </mapper>
