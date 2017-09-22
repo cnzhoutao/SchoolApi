@@ -4,7 +4,7 @@
   Created by IntelliJ IDEA.
   User: zt
   Date: 2017/9/22
-  Time: 下午12:15
+  Time: 下午2:08
   To change this template use File | Settings | File Templates.
 --%>
 <%
@@ -28,8 +28,8 @@
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
             <li class="layui-nav-item"><a href="<%=basePath%>index.html">发表新闻</a></li>
-            <li class="layui-nav-item layui-this"><a href="<%=basePath%>userContro.html">用户管理</a></li>
-            <li class="layui-nav-item"><a href="<%=basePath%>inviContro.html">帖子管理</a></li>
+            <li class="layui-nav-item "><a href="<%=basePath%>userContro.html">用户管理</a></li>
+            <li class="layui-nav-item layui-this"><a href="<%=basePath%>inviContro.html">帖子管理</a></li>
             <li class="layui-nav-item">
                 <a href="javascript:;">其它系统</a>
             </li>
@@ -88,27 +88,28 @@
             </colgroup>
             <thead>
             <tr>
-                <th>用户名</th>
-                <th>手机号</th>
-                <th>学校</th>
-                <th>注册时间</th>
+                <th>标题</th>
+                <th>发表用户</th>
+                <th>类别</th>
+                <th>发表时间</th>
+                <th>点赞量</th>
                 <th>操作</th>
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${list}" var="stu">
+            <c:forEach items="${list}" var="invi">
                 <tr>
-                    <td>${stu.userName}</td>
-                    <td>${stu.phoneNum}</td>
-                    <td>${stu.school}</td>
+                    <td>${invi.title}</td>
+                    <td>${invi.userName}</td>
+                    <td>${invi.type}</td>
                     <td>
-                        <fmt:formatDate value="${stu.creTime}" pattern="yyyy-MM-dd"/>
+                        <fmt:formatDate value="${invi.creTime}" pattern="yyyy-MM-dd"/>
                     </td>
                     <td>
-                        <a class="layui-btn layui-btn-danger layui-btn-mini update" flag="${stu.id}">
-                            提拔为管理员
-                        </a>
-                        <a class="layui-btn layui-btn-danger layui-btn-mini delete" flag="${stu.id}">
+                        ${invi.likeNum}
+                    </td>
+                    <td>
+                        <a class="layui-btn layui-btn-danger layui-btn-mini delete" flag="${invi.id}">
                             删除
                         </a>
 
@@ -120,8 +121,6 @@
         </table>
 
         <%--内容结束--%>
-
-
     </div>
 
     <%--footer开始--%>
@@ -139,25 +138,10 @@
         var
             $ = layui.jquery
             , layer = layui.layer;
-//        将普通用户提拔为管理员
-        $('.update').click(function () {
-            $.post('<%=basePath%>upUser.html',
-                {userId: this.getAttribute("flag")}
-                , function (data) {
-                        if(data.code==1){
-                            layer.msg("提拔成功",{icon:1,anim:6,time:500},function () {
-                                location.reload();
-                            });
-                        }else {
-                            layer.msg('网络不佳，请稍后重试',{icon:2,anim:6,time:500});
-                        }
-                });
-
-        });
 
         $('.delete').click(function () {
 
-            $.post("<%=basePath%>deleteUser.html",{userId:this.getAttribute("flag")},function (data) {
+            $.post("<%=basePath%>deleteInvi.html",{inviId:this.getAttribute("flag")},function (data) {
                 if(data.code==1){
                     layer.msg("删除成功",{icon:1,anim:6,time:500},function () {
                         location.reload();

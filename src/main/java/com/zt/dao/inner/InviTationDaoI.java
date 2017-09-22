@@ -75,4 +75,10 @@ public interface InviTationDaoI {
      * @return
      */
     public List<InviWithDetailImg> getSavedInvi(@Param(value = "userId") long userId);
+
+    /**
+     * 根据id删除一条帖子
+     * @param inviId
+     */
+    public void deleteInviById(@Param(value = "inviId") long inviId);
 }

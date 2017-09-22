@@ -26,7 +26,7 @@
         <ul class="layui-nav layui-layout-left">
             <li class="layui-nav-item layui-this"><a href="">发表新闻</a></li>
             <li class="layui-nav-item"><a href="<%=basePath%>userContro.html">用户管理</a></li>
-            <li class="layui-nav-item"><a href="">帖子管理</a></li>
+            <li class="layui-nav-item"><a href="<%=basePath%>inviContro.html">帖子管理</a></li>
             <li class="layui-nav-item">
                 <a href="javascript:;">其它系统</a>
             </li>

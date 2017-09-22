@@ -118,4 +118,8 @@
           );
     </select>
 
+    <delete id="deleteInviById" parameterType="long">
+        DELETE from inviTation where id=#{inviId}
+    </delete>
+
 </mapper>
