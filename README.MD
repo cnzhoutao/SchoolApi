@@ -90,7 +90,10 @@ http://localhost:8080/getInfoByPhone.html?phoneNum=1
 http://localhost:8080/updateIcon.html?phoneNum=1&icon=icon.png
 ```
 
-
+更改头像的api
+```html
+http://localhost:8080/updateIcon.html?phoneNum=1&userName=用户名
+```
 
 
 **表结构**
