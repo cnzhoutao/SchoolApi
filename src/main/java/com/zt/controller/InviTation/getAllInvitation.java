@@ -144,6 +144,11 @@ public class getAllInvitation {
         }
     }
 
+    /**
+     * 根据个人id获取该用户收藏的帖子
+     * @param phoneNum
+     * @return
+     */
     @RequestMapping(value = "getSave.html")
     @ResponseBody
     public AjaxResponse getSave(@RequestParam(value = "phoneNum")String phoneNum){

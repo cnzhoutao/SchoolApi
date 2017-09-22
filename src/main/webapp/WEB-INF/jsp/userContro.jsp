@@ -1,8 +1,10 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: zt
-  Date: 2017/9/20
-  Time: 下午11:46
+  Date: 2017/9/22
+  Time: 下午12:15
   To change this template use File | Settings | File Templates.
 --%>
 <%
@@ -10,10 +12,11 @@
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>后台管理界面</title>
+    <title>用户管理</title>
     <link rel="stylesheet" type="text/css" href="<%=basePath%>layui/css/layui.css">
     <script type="text/javascript" src="<%=basePath%>layui/layui.js"></script>
 </head>
@@ -24,14 +27,13 @@
         <div class="layui-logo">校园狸后台管理</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item layui-this"><a href="">发表新闻</a></li>
-            <li class="layui-nav-item"><a href="<%=basePath%>userContro.html">用户管理</a></li>
+            <li class="layui-nav-item"><a href="<%=basePath%>index.html">发表新闻</a></li>
+            <li class="layui-nav-item layui-this"><a href="<%=basePath%>userContro.html">用户管理</a></li>
             <li class="layui-nav-item"><a href="">帖子管理</a></li>
             <li class="layui-nav-item">
                 <a href="javascript:;">其它系统</a>
             </li>
         </ul>
-
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
                 <a href="javascript:;">
@@ -76,20 +78,47 @@
 
 
     <div class="layui-body">
-        <div class="layui-form-item" style="margin-top: 20px; ">
-            <div class="layui-input-inline input-custom-width">
-                <input type="text" name="title" lay-verify="required" placeholder="请输入一个标题" autocomplete="off"
-                       class="layui-input title">
-            </div>
-        </div>
+        <%--内容开始--%>
 
-        <textarea class="layui-textarea" id="LAY_demo1" style="display: none">
-            请输入你的文章
-        </textarea>
+        <table class="layui-table">
+            <colgroup>
+                <col width="150">
+                <col width="200">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>用户名</th>
+                <th>手机号</th>
+                <th>学校</th>
+                <th>注册时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${list}" var="stu">
+                <tr>
+                    <td>${stu.userName}</td>
+                    <td>${stu.phoneNum}</td>
+                    <td>${stu.school}</td>
+                    <td>
+                        <fmt:formatDate value="${stu.creTime}" pattern="yyyy-MM-dd"/>
+                    </td>
+                    <td>
+                        <a class="layui-btn layui-btn-danger layui-btn-mini update" flag="${stu.id}">
+                            提拔为管理员
+                        </a>
 
-        <div class="site-demo-button" style="margin-top: 20px;">
-            <button class="layui-btn site-demo-layedit submit" data-type="content">提交</button>
-        </div>
+                    </td>
+                </tr>
+            </c:forEach>
+
+            </tbody>
+        </table>
+
+        <%--内容结束--%>
+
+
     </div>
 
     <%--footer开始--%>
@@ -102,50 +131,31 @@
 
 </div>
 <script>
-    layui.use(['layedit', 'jquery','layer','element','upload'], function () {
-        var layedit = layui.layedit
-            , $ = layui.jquery
-            ,layer=layui.layer
-            ,upload = layui.upload;
-        var imgName;
-        //配置图片上传接口
-        layedit.set({
-            height: 800,
-            uploadImage: {
-                url: '<%=basePath%>upload.html' //接口url
-            }
+    layui.use(['jquery', 'layer', 'element'], function () {
+
+        var
+            $ = layui.jquery
+            , layer = layui.layer;
+        $('.update').click(function () {
+
+            $.post('<%=basePath%>upUser.html',
+                {userId: this.getAttribute("flag")}
+                , function (data) {
+                        if(data.code==1){
+                            layer.msg("提拔成功",{icon:1,anim:6,time:500},function () {
+                                location.reload();
+                            });
+                        }else {
+                            layer.msg('网络不佳，请稍后重试',{icon:2,anim:6,time:500});
+                        }
+                });
+
         });
 
-
-        //构建一个默认的编辑器
-        var index = layedit.build('LAY_demo1');
-//            提交用户编辑的文章
-        $('.submit').click(function () {
-
-            if($('.title').val().trim().length=0){
-                layer.msg("请先输入标题!",{icon:2,anim:6,time:2000});
-                return;
-            }
-            //提交文章到后台
-            $.post('<%=basePath%>saveArticle.html',{
-                title:$('.title').val(),
-                content:layedit.getContent(index)
-            },function (data) {
-                if(data.code==1){
-                    layer.msg("保存文章成功",{icon:1,anim:6,time:2000},function () {
-                        location.reload();
-                    });
-                }else {
-                    layer.msg(data.msg,{icon:2,anim:6,time:2000});
-                }
-            })
-        });
 
     });
 
-
 </script>
 </body>
-
 
 </html>

@@ -62,4 +62,16 @@ public interface StuDaoI {
      * @return
      */
     public int checkBackLogin(@Param(value = "phoneNum")String phoneNum,@Param(value = "pwd") String pwd);
+
+    /**
+     * 获取所有普通用户
+     * @return
+     */
+    public List<Stu> getAllCommonUser();
+
+    /**
+     * 提拔普通用户为管理员
+     * @param userId
+     */
+    public void UpUser(@Param(value = "userId") long userId);
 }

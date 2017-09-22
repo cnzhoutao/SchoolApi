@@ -51,4 +51,12 @@
         and pwd=#{pwd}
         and isAdmin='1'
     </select>
+
+    <select id="getAllCommonUser" resultType="com.zt.entity.Stu">
+        SELECT * from stu where isAdmin='0'
+    </select>
+
+    <update id="UpUser" parameterType="long">
+        UPDATE stu set isAdmin = '1' where id =#{userId}
+    </update>
 </mapper>
