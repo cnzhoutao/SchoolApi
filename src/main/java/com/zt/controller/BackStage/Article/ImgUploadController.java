@@ -36,7 +36,7 @@ public class ImgUploadController {
     @Autowired
     private DetailImgDaoI detailImgDaoI;
 
-    private String newImgName = "";
+    private String newImgName = null;
 
     @RequestMapping(value = "upload.html")
     @ResponseBody
@@ -91,13 +91,16 @@ public class ImgUploadController {
             inviTation.setUserIcon(stu.getIcon());
             inviTation.setType(1);
             inviTationDaoI.insertInvi(inviTation);
-            if (newImgName != null) {
+
+            if (newImgName != null && newImgName!="") {
                 List<Long> list = inviTationDaoI.getIdByTitle(title);
                 DetailImg detailImg=new DetailImg();
                 detailImg.setInviId(list.get(list.size()-1));
                 detailImg.setImgUrl(newImgName);
                 detailImgDaoI.insertDetailImg(detailImg);
             }
+            newImgName=null;
+
             return AjaxResponse.success(1, "管理员发表文章成功", null);
         } catch (Exception e) {
             System.err.println("管理员发帖子出错:" + e.toString());

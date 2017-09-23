@@ -75,7 +75,7 @@
           select * from
           inviTation left join detailImg
           on inviTation.id=detailImg.inviId
-          where inviTation.type=#{type}
+          where inviTation.type=#{type} order by inviTation.creTime desc
     </select>
 
     <!--该条帖子的点赞数+1-->

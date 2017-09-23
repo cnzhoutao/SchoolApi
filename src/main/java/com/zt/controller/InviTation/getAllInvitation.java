@@ -86,8 +86,8 @@ public class getAllInvitation {
             data.put("list", list);
             return AjaxResponse.success(1, "获取数据成功", data);
         } catch (Exception e) {
-            System.err.println("获取帖子及其对应的细节图失败");
-            return AjaxResponse.failure(0, "后去细节图失败", null);
+            System.err.println("获取帖子及其对应的细节图失败"+e.toString());
+            return AjaxResponse.failure(0, "获取细节图失败", null);
         }
 
     }
