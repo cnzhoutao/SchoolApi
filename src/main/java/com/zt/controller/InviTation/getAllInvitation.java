@@ -51,6 +51,24 @@ public class getAllInvitation {
         }
     }
 
+    /**
+     * 请求所有帖子按viewNum倒序排列
+     * @return
+     */
+    @RequestMapping(value = "getAllInviHot.html")
+    @ResponseBody
+    public ApiResponse getAllInviHot(){
+        try {
+            List<InviTation> list = inviTationDaoI.getAllInviOrderByViewNum();
+            Map<String, Object> data = new HashMap<String, Object>();
+            data.put("list", list);
+            return ApiResponse.success(1, "请求数据成功", data);
+        }catch (Exception e){
+            System.err.println("获取所有的热帖失败:"+e.toString());
+            return ApiResponse.failure(0,"获取所有的热帖失败",null);
+        }
+    }
+
 
     /**
      * 根据type获取所有帖子及其细节图

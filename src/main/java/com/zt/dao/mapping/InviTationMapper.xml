@@ -44,6 +44,10 @@
     <select id="getAllInvi" resultType="com.zt.entity.InviTation">
         SELECT * from inviTation order by creTime DESC
     </select>
+    <!--获取 所有帖子，根据viewNum倒序排列-->
+    <select id="getAllInviOrderByViewNum" resultType="com.zt.entity.InviTation">
+        SELECT * from inviTation order by viewNum DESC
+    </select>
 
     <insert id="insertInvi" parameterType="com.zt.entity.InviTation">
         INSERT into inviTation(

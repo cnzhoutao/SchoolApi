@@ -16,6 +16,13 @@ public interface InviTationDaoI {
      */
     public List<InviTation> getAllInvi();
 
+
+    /**
+     * 获取所有帖子，根据viewNum倒序排列
+     * @return
+     */
+    public List<InviTation> getAllInviOrderByViewNum();
+
     /**
      * 插入一条帖子记录
      * @param inviTation
