@@ -1,6 +1,7 @@
 package com.zt.controller.InviJuge;
 
 import com.zt.dao.inner.InviJugeDaoI;
+import com.zt.dao.inner.InviTationDaoI;
 import com.zt.dao.inner.StuDaoI;
 import com.zt.entity.JugeInvi;
 import com.zt.entity.Stu;
@@ -23,6 +24,9 @@ public class InviJugeController {
     @Autowired
     private InviJugeDaoI inviJugeDaoI;
 
+    @Autowired
+    private InviTationDaoI inviTationDaoI;
+
 
     @RequestMapping(value = "juge.html")
     @ResponseBody
@@ -40,6 +44,9 @@ public class InviJugeController {
             jugeInvi.setUserId(stu.getId());
             jugeInvi.setUserName(stu.getUserName());
             inviJugeDaoI.insertJuge(jugeInvi);
+
+            inviTationDaoI.jugeNumAdd1(inviId);
+
 
             return AjaxResponse.success(1,"用户评论成功",null);
         } catch (Exception e) {

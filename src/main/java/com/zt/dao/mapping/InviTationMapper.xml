@@ -135,4 +135,8 @@
         UPDATE inviTation set userName where userId=#{userId}
     </update>
 
+    <update id="jugeNumAdd1" parameterType="long">
+        UPDATE inviTation set jugeNum=jugeNum+1 where id=#{inviId};
+    </update>
+
 </mapper>

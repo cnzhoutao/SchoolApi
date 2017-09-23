@@ -103,5 +103,10 @@ public interface InviTationDaoI {
      */
     public void updateUserName(@Param(value = "userName") String userName,@Param(value = "userId") long userId);
 
+    /**
+     * 对应帖子的评论数加1
+     * @param inviId
+     */
+    public void jugeNumAdd1(@Param(value = "inviId") long inviId);
 
 }

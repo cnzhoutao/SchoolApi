@@ -35,4 +35,5 @@ public interface InviJugeDaoI {
      */
     public void updateUserName(@Param(value = "userName") String userName,@Param(value = "userId") long userId);
 
+
 }
