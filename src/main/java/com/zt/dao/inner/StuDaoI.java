@@ -115,4 +115,8 @@ public interface StuDaoI {
      */
     public void updateUserName(@Param(value = "userName") String userName,@Param(value = "userId") long userId);
 
+    /**
+     * 获取所有管理员用户
+     */
+    public List<Stu> getAllAdmin();
 }

@@ -84,4 +84,8 @@
         UPDATE stu set userName where id=#{userId}
     </update>
 
+    <select id="getAllAdmin" resultType="com.zt.entity.Stu">
+        SELECT * from stu where isAdmin='1'
+    </select>
+
 </mapper>

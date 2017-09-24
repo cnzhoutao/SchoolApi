@@ -26,6 +26,9 @@ public class UserPageController {
         ModelAndView modelAndView=new ModelAndView("userContro");
         List<Stu> list=stuDaoI.getAllCommonUser();
         modelAndView.addObject("list",list);
+
+        List<Stu> adminList=stuDaoI.getAllAdmin();
+        modelAndView.addObject("adminList",adminList);
         return modelAndView;
     }
 
