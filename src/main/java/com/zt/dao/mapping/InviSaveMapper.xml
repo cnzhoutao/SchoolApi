@@ -40,5 +40,8 @@
         UPDATE inviSave set userName=#{userName} where userId=#{userId}
     </update>
 
+    <delete id="deleteInviById" parameterType="long">
+        DELETE from inviSave where inviId=#{inviId}
+    </delete>
 
 </mapper>

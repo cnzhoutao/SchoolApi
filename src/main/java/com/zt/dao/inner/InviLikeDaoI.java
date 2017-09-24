@@ -42,4 +42,10 @@ public interface InviLikeDaoI {
      * @param usrId
      */
     public void updateUserName(@Param(value = "userName") String userName,@Param(value = "userId") long usrId);
+
+    /**
+     * 删除已经删除但点过赞的帖子
+     * @param inviId
+     */
+    public void deleteInviById(@Param(value = "inviId") long inviId);
 }

@@ -44,4 +44,10 @@ public interface InviSaveDaoI {
      * @param userId
      */
     public void updateUserName(@Param(value = "userName") String userName,@Param(value = "userId") long userId);
+
+    /**
+     * 删除已经删除的帖子收藏
+     * @param inviId
+     */
+    public void deleteInviById(@Param(value = "inviId") long inviId);
 }

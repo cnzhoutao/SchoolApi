@@ -99,6 +99,10 @@ http://localhost:8080/updateIcon.html?phoneNum=1&icon=icon.png
 ```html
 http://localhost:8080/updateIcon.html?phoneNum=1&userName=用户名
 ```
+删除个人发帖及其相关内容
+```html
+http://localhost:8080/deletePInviById.html?inviId=60
+```
 
 
 **表结构**

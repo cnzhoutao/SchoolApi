@@ -43,4 +43,8 @@
         UPDATE inviLike set userName=#{userName} where userId=#{userId}
     </update>
 
+    <delete id="deleteInviById" parameterType="long">
+        DELETE from inviLike where inviId=#{inviId}
+    </delete>
+
 </mapper>

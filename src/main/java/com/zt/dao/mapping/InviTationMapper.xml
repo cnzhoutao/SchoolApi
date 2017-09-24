@@ -139,4 +139,5 @@
         UPDATE inviTation set jugeNum=jugeNum+1 where id=#{inviId};
     </update>
 
+
 </mapper>
