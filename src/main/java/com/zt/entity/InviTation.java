@@ -14,6 +14,7 @@ public class InviTation implements Serializable {
     private int userId;//用户id
     private String userName;//用户名
     private String userIcon;//用户头像
+    private long viewNum;//浏览量
 
 
     public InviTation() {
@@ -32,7 +33,16 @@ public class InviTation implements Serializable {
                 ", userId=" + userId +
                 ", userName='" + userName + '\'' +
                 ", userIcon='" + userIcon + '\'' +
+                ", viewNum=" + viewNum +
                 '}';
+    }
+
+    public long getViewNum() {
+        return viewNum;
+    }
+
+    public void setViewNum(long viewNum) {
+        this.viewNum = viewNum;
     }
 
     public long getId() {

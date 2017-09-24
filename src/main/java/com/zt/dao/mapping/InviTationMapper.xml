@@ -42,7 +42,7 @@
 
 
     <select id="getAllInvi" resultType="com.zt.entity.InviTation">
-        SELECT * from inviTation order by creTime DESC
+        SELECT id,type,title,likeNum,creTime,jugeNum,userId,userName,userIcon,viewNum from inviTation order by creTime DESC
     </select>
     <!--获取 所有帖子，根据viewNum倒序排列-->
     <select id="getAllInviOrderByViewNum" resultType="com.zt.entity.InviTation">

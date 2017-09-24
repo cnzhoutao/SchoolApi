@@ -14,21 +14,21 @@ public class JugeInvi implements Serializable {
     private String userName;
     private String userIcon;
     private String content;
-    private Date cretTime;
+    private Date creTime;
 
     public JugeInvi() {
     }
 
     @Override
     public String toString() {
-        return "JugeInVi{" +
+        return "JugeInvi{" +
                 "id=" + id +
                 ", inviId=" + inviId +
                 ", userId=" + userId +
                 ", userName='" + userName + '\'' +
                 ", userIcon='" + userIcon + '\'' +
                 ", content='" + content + '\'' +
-                ", cretTime=" + cretTime +
+                ", cretTime=" + creTime +
                 '}';
     }
 
@@ -80,11 +80,11 @@ public class JugeInvi implements Serializable {
         this.content = content;
     }
 
-    public Date getCretTime() {
-        return cretTime;
+    public Date getCreTime() {
+        return creTime;
     }
 
-    public void setCretTime(Date cretTime) {
-        this.cretTime = cretTime;
+    public void setCreTime(Date creTime) {
+        this.creTime = creTime;
     }
 }
