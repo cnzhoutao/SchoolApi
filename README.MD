@@ -9,7 +9,7 @@ getSchNameByPid.html?pId=1
 ```
 用户注册api
 ```html
-http://localhost:8080/reg.html?userName=南柯一梦&phoneNum=1515757603561&schoolName=台州学院&pwd=123456
+http://localhost:8080/reg.html?userName=南柯一梦&phoneNum=1515757603561&schoolName=&pwd=123456
 ```
 用户登录api
 ```html
@@ -36,8 +36,6 @@ http://localhost:8080/getInviAndImg.html?type=4
 ```html
 http://localhost:8080/uploadInviText.html?type=1&title="标题"&content="neibfdg"&phoneNum=1
 ```
-
-
 帖子收藏的api
 ```html
 http://localhost:8080/saveInvi.html?inviId=4&phoneNum=1
@@ -70,8 +68,6 @@ http://localhost:8080/juge.html?inviId=4&phoneNum=1&content=评论内容
 ```html
 http://localhost:8080/getSave.html?phoneNum=1
 ```
-
-
 
 修改年龄的api
 

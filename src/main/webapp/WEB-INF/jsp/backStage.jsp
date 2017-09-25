@@ -37,7 +37,7 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">
                     <img src="<%=basePath%>img/huli.png" class="layui-nav-img">
-                    贤心
+                    admin
                 </a>
                 <dl class="layui-nav-child">
                     <dd><a href="">基本资料</a></dd>
